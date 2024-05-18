@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{
+            display: flex;
+            background-color: black;
+            padding: 20px;
+            justify-content: space-between;
+
+        }
+        li {
+            text-decoration: none;
+            list-style-type: none;
+            height: 50px;
+            width: 100px;
+            background-color: bisque;
+            padding: 20px;
+            padding-top: 30px;
+        }
+        a{
+            text-decoration: none;
+        }
+        li input{
+            height:  40px;
+            font-size: 16px;
+            width:  90%;
+
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li> <a href="/home">HOME</a></li>
+        <li><a href="/about">ABOUT</a></li>
+        <li><a href="/contact">CONTACT</a></li>
+        <li style="background-color:black;"> 
+            <form action="find">
+            <input type="search" name="rollno" placeholder="search"> <input type="submit"  value="search"> </form></li>
+    </ul>
+   <h1> this the home page </h1> 
+   <form action="home" method="POST">
+    {% csrf_token %}
+    <label> ROLL NO</label>
+    <input type="text" name="rollno"> <br>
+    <label>  NAME </label>
+    <input type="text" name="name"><br/>
+
+    <label >AGE</label>
+    <input type="number" name="age"> <br>
+    <label > COURSE</label>
+    <select name="course">
+        <option value="python"> python</option>
+        <option value="java"> java</option>
+        <option value="c++"> c++</option>
+        <option value="AI"> AI</option>
+        <option value="datascience"> datascience</option>
+    </select> <br> 
+<label > PHONE NUMBER</label>  
+<input type="text" name="phone_number"> <br>
+<label > ADDRESS</label>
+<input type="text" name="address" > <br>
+<label >EMAIL</label>
+<input type="text" name="email" > <br>
+    <input type="submit">
+
+   </form>
+   <div class="alert alert-success">
+    {{ message }}
+</div>
+<button> <a href="/all"> show all data</a> </button>
+<div class="table">
+<table align="center" style="margin: 0px auto;">
+    <thead>
+        <tr>
+            <th>ROLL NO</th>
+            <th>NAME</th>
+            <th>AGE</th>
+            <th>COURSE</th>
+            <th>PHONE NUMBER</th>
+            <th>ADDRESS</th>
+            <th>EMAIL</th>
+          
+        </tr>
+    </thead>
+    <tbody>
+        {% for blog in all %}
+        <tr>
+            <td>{{blog.rollno}}</td>
+            <td>{{blog.name}}</td>
+            <td>{{blog.age}}</td>
+            <td>{{blog.course}}</td>
+            <td>{{blog.phone_number}}</td>
+            <td>{{blog.address}}</td>
+            <td>{{blog.email}}</td>
+
+        {% endfor %}
+    </tbody>
+</table>
+<h1>find value</h1>
+<table align="center" style="margin: 0px auto;">
+    
+  
+        {% for blog in serach %}
+        <tr>
+            <td>{{blog.rollno}}</td>
+            <td>{{blog.name}}</td>
+            <td>{{blog.age}}</td>
+            <td>{{blog.course}}</td>
+            <td>{{blog.phone_number}}</td>
+            <td>{{blog.address}}</td>
+            <td>{{blog.email}}</td>
+        </tr>
+
+        {% endfor %}
+      
+</table>
+</div>
+
+</body>
+</html>

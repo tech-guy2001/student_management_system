@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 style="text-align:center"> Blog Informationn </h2>
+    <table align="center" style="margin: 0px auto;">
+        <thead>
+            <tr>
+                <th>ROLL NO</th>
+                <th>NAME</th>
+                <th>AGE</th>
+                <th>COURSE</th>
+                <th>PHONE NUMBER</th>
+                <th>ADDRESS</th>
+              
+            </tr>
+        </thead>
+        <tbody>
+            {% for blog in all %}
+            <tr>
+                <td>{{blog.rollno}}</td>
+                <td>{{blog.name}}</td>
+                <td>{{blog.age}}</td>
+                <td>{{blog.course}}</td>
+                <td>{{blog.phone_number}}</td>
+                <td>{{blog.address}}</td>
+    
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
